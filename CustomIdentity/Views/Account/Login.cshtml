@@ -1,0 +1,45 @@
+﻿@using CustomIdentity.ViewModels;
+@model LoginVm
+
+    
+<div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-3 card p-3">
+        <h2 class="text-center text-info">Login</h2>
+        <form asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-check">
+                <input asp-for="RememberMe" class="form-check-input" col-md-3 /> @Html.DisplayNameFor(a=>a.RememberMe)
+                
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-8">
+                    <a asp-action="Register" class="text-decoration-none float-start mt-2">Don't have an account?</a>
+                </div>
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+
+    }
+}
